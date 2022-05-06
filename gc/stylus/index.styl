@@ -1,0 +1,1068 @@
+html, body, div, span, applet, object, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video, ul, ol, li
+  margin: 0
+  padding: 0
+  border: 0
+  font-size: 100%
+  font: inherit
+  font-weight: normal
+  vertical-align: baseline
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section
+  display: block
+
+ol, ul, li
+  list-style: none
+
+blockquote, q
+  quotes: none
+
+blockquote
+  &:before, &:after
+    content: ''
+    content: none
+
+q
+  &:before, &:after
+    content: ''
+    content: none
+
+table
+  border-collapse: collapse
+  border-spacing: 0
+
+th, td
+  vertical-align: middle
+
+a
+  outline: none
+  color: #16418a
+  text-decoration: none
+  -webkit-backface-visibility: hidden
+
+  &:focus
+    outline: none
+
+input:focus, select:focus, textarea:focus
+  outline: -webkit-focus-ring-color auto 0
+
+a,a:hover,a:active,a:visited,a:link,a:focus{
+    -webkit-tap-highlight-color:rgba(0,0,0,0);
+    -webkit-tap-highlight-color: transparent;
+    outline:none;
+    background: none;
+    text-decoration: none;
+}
+
+
+$mainColor = #22777B
+$yellow = #FFBF33
+  
+// homepage
+.homepage
+  position fixed
+  top 0
+  left 0 
+  background rgba(0,0,0,1) url("../panos/park.tiles/preview.jpg") no-repeat center/cover
+  width 100%
+  height 100%
+  z-index 4
+  display flex
+  flex-direction column
+  justify-content space-around
+  align-items center
+
+  .logo
+    text-align center
+    
+    img
+      width 95%
+
+  .button
+    a 
+      display block
+      width 200px
+      height 40px
+      line-height 36px
+      margin 0 auto
+      background url("../images/icon-button.png") no-repeat
+      background-size 100% 100%
+      color #fff
+      text-align center
+      position relative
+
+
+// progress
+.loadingbar 
+  display none
+  position fixed
+  top 0
+  left 0
+  background rgba(0,0,0,.8)
+  width 100%
+  height 100%
+  justify-content center
+  flex-direction column
+  align-items center
+  z-index 3
+
+  &.on 
+    display flex
+
+  .logo 
+    color #2A959A
+    line-height 60px
+    // text-shadow 6px 4px 2px #002859
+    font-size 20px
+    margin-top 48px
+
+  .loading
+    width 180px
+    height 180px
+
+
+// rotateScreen
+.rotateScreen
+  position fixed
+  top 0
+  left 0
+  background rgba(0,0,0,.8)
+  width 100%
+  height 100%
+  display flex
+  justify-content center
+  flex-direction column
+  align-items center
+  z-index -1
+  transition all 0.4s ease-in
+
+
+  &.on
+    z-index 2
+
+    .icon-rotate
+      img
+        transform rotate(90deg) 
+        animation rotatemove 1.2s ease-in 0.8s 1 forwards 
+        width 240px
+
+  .rotate_word 
+    color #2A959A
+    line-height 60px
+    // text-shadow 6px 4px 2px #002859
+    font-size 24px
+    margin-bottom 60px
+
+  
+
+// intro 文字介绍
+.intro
+  position fixed
+  bottom 0
+  width 100%
+  height 100%
+  padding 0 20px
+  box-sizing border-box
+  display flex
+  align-items flex-end
+  z-index -1 
+  font-size 14px
+
+  .guider
+    height 76%
+    display flex
+    flex-direction column
+    justify-content flex-end
+    
+    img
+      height 100%
+      max-height 373px
+
+  .container
+    box-shadow 0px 2px 8px 0px rgba(0, 0, 0, 0.5)
+    background rgba(6, 22, 22, 0.6)
+    margin-bottom 24px 
+    border 1px solid #47DBE2
+    border-radius 20px 0px 20px 0px
+    padding 16px 32px
+    box-sizing border-box
+    // flex-grow 1
+
+    .buttons
+      text-align center
+      position relative
+      min-height 32px
+
+      a   
+        width 96px
+        height 32px
+        line-height 32px
+        background $mainColor
+        border-radius 32px
+        text-align center
+        color #fff
+        display none
+
+        &[data-id='next']
+          position absolute
+          right 0
+          bottom 0
+          font-size 14px
+          color $yellow
+          background transparent
+          display inline-block
+
+      &.on
+        a
+          display inline-block
+          margin 16px 8px 0
+
+          &[data-id='next']
+            display none
+
+
+
+
+// swiper
+.wrapper 
+  position fixed
+  // top calc(100vh - 48px)
+  bottom 18vh
+  z-index 1
+  padding 0 26px
+  width 100%
+  box-sizing border-box
+  // height 32px
+  height 0
+  
+  .icon-swiper
+    width 28px
+    height 28px
+    border 2px solid $mainColor
+    background rgba($mainColor,1)
+    border-top-right-radius 10px
+    border-bottom-left-radius 10px
+    margin-bottom 16px
+    position absolute
+
+    a
+      display block
+      height 100%
+      background url('../images/icon-swiper.png') no-repeat center
+      background-size 32px 32px 
+
+  .swiper-container 
+    margin-top 48px 
+
+    img 
+      max-width 100%
+      border 2px solid #fff
+      box-sizing border-box
+
+      &.on 
+        border-color #39eef5
+
+    .swiper-wrapper
+      visibility hidden
+      opacity 0
+
+      .swiper-slide 
+        display flex
+        justify-content center
+        align-items center
+        font-size 0
+        width 60px 
+
+        
+
+        .sceneName
+          width calc(100% - 4px)
+          height 20px
+          position absolute
+          bottom 2px
+          left 2px
+          background rgba(0,0,0,0.6)
+          color #fff 
+          font-size 0.8rem
+          overflow hidden 
+          text-overflow ellipsis 
+          line-height 20px 
+          padding 0 4px 
+          box-sizing border-box 
+          white-space nowrap
+        
+        &.on
+          img
+            border-color $yellow
+
+
+  
+  &.on 
+    top auto
+    bottom 16px
+    height 108px
+
+    .swiper-wrapper
+      visibility visible
+      opacity 1
+
+
+
+    .icon-swiper
+      background rgba($mainColor,.8)
+
+
+
+//profile-wrapper
+.profileWrapper
+  position fixed
+  top 0
+  z-index 4
+  width 100%
+  box-sizing border-box
+  
+
+  &::before
+    display block
+    content ''
+    width 100%
+    height 100%
+    background rgba(0,0,0,.9)
+    position fixed 
+    top 0
+    left 0
+
+  .title
+    position fixed
+    top 16px
+    width 80%
+    height 22px
+    text-align center
+    margin auto 10% 
+
+  .icon-close
+    position fixed
+    top 0
+    right 10px
+    width 100%
+    height 22%
+    z-index 3
+
+    a
+      position fixed
+      top 16px
+      right 16px
+      width 28px
+      height 28px
+      border-radius 50% 
+      margin-bottom 16px
+      display block
+      background rgba($mainColor,1) url("../images/icon-close.png") no-repeat center
+      background-size 28px 28px
+
+  
+  .swiper-container 
+
+    .swiper-wrapper
+      padding-top 20%
+      box-sizing border-box
+    
+    img 
+      max-width 100%
+      max-height 100%
+      border 2px solid #fff
+      box-sizing border-box
+
+      &.on 
+        border-color #39eef5
+
+    .swiper-slide 
+      display flex
+      justify-content center
+      align-items center
+      font-size 0
+      border-top-left-radius 50px
+      border-bottom-right-radius 50px
+      border 8px solid rgba($mainColor,1)
+      box-sizing border-box
+      background rgba(#ffffff,0.4) 
+      padding 8px 16px
+      height calc(100% - 80px)
+
+
+ 
+
+      .brand 
+        background #7BBC4D
+        width 18%
+        height calc(100% + 16px)
+        position absolute
+        bottom -8px
+        left calc(-18% - 8px)
+
+        &::after
+          content ''
+          display block
+          width 52px
+          height 52px
+          line-height 100px
+          text-align center
+          background-image radial-gradient(200px at 51px 0px, transparent 50px, #7BBC4D 50px) 
+          transform: rotate(90deg);
+          position absolute
+          right -50px
+
+        .title
+          position absolute
+          top -66px
+          height 66px
+          width 200%
+          background #7BBC4D 
+          border-top-right-radius 36px
+          padding-right 18px
+          padding-left 18%
+          box-sizing border-box
+          margin 0
+
+          &::before
+            display block
+            content ''
+            height 80%
+            margin-top 10%
+            background url("../images/swiper-logo.png") no-repeat left center
+            background-size contain
+
+      .swiper-content
+        height 48vh
+
+        .content
+          font-size 14px
+          padding-bottom 16px
+          overflow-y scroll
+          height 100%
+          box-sizing border-box
+          text-align justify
+          word-break break-all
+          overflow-wrap break-word
+
+          h1
+            text-align center
+            border-top 1px solid #fff
+            border-bottom 1px solid #fff
+            width 88% 
+            margin 0 auto 16px auto
+            font-weight bold
+            font-size 16px
+            line-height 24px
+
+            p
+              font-size 0.8em
+              font-weight normal
+              transform scale(0.8)
+              line-height normal
+
+
+          h2
+            font-weight bold
+          
+          h3
+            font-weight bold
+            // font-size 13px
+            margin-bottom 6px
+
+          .dot
+            position relative
+            padding-left 20px
+            font-weight bold
+             
+            &::before
+              content ''
+              display inline-block
+              width 6px
+              height 6px
+              border-radius 50%
+              background #fff 
+              position absolute 
+              left 0 
+              top 50% 
+              transform translateY(-50%) 
+
+          .img  
+            text-align center 
+            position relative
+
+            .icon-play
+              position absolute
+              top 0
+              left 0
+              width 100%
+              height 100%
+              background url("../images/icon-play.png") no-repeat center
+              background-size 48px 48px
+              pointer-events none
+
+
+            img
+              border-color transparent
+
+          embed,iframe,video
+            width 100%
+
+      &::after
+        content ''
+        display block
+        width calc(100% + 2px)
+        height calc(100% + 2px)
+        position absolute
+        top -1px
+        left -1px
+        filter blur(20px)
+        background: rgba(255,255,255,0.2)
+        border-top-left-radius 42px
+        border-bottom-right-radius 42px
+        z-index -1
+
+
+  .swiper-button-next, .swiper-button-prev
+    margin-top 11%
+    color #fff
+    border 1px solid $mainColor
+    width 36px
+    height 36px 
+    border-radius 50%
+    line-height 36px
+    background rgba($mainColor,0.8)
+    margin 20px
+
+    &::after
+      font-size 20px
+
+  .imgDiv
+    position fixed
+    top 0
+    left 0 
+    width 100%
+    height 100%
+    display flex
+    justify-content center
+    align-items center
+    z-index 10
+
+    .imgDivWrap
+      margin-top 18%
+      margin-bottom 10%
+      box-sizing border-box
+      width 90%
+      height 72%
+      overflow-y scroll
+
+      img
+        width 100%
+    
+    img,video
+      max-width 100%
+      max-height 100%
+
+.swiper-slide.on img
+  transition all 0.8s cubic-bezier(0.39, 0.58, 0.57, 1)
+
+.icon-back
+  position fixed
+  top 16px
+  left 26px
+  width 28px
+  height 28px
+  background rgba($mainColor,1)
+  border-top-right-radius 10px
+  border-bottom-left-radius 10px
+  margin-bottom 16px
+  transform translateZ(0)
+  border 2px solid $mainColor
+  
+  a
+    display block
+    height 100%
+    background url("../images/icon-back.png") no-repeat center
+    background-size 28px 28px
+    
+
+.icon-music
+  position absolute
+  top 30px
+  right 20px
+  width 28px
+  height 28px
+  background rgba($mainColor,0.8) url("../images/icon-music.png") no-repeat center
+  background-size 28px 28px
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border 2px solid $mainColor
+  z-index 4
+  transform translateZ(0) 
+
+
+
+.icon-music.on
+  background rgba($mainColor,0.8) url("../images/icon-musicon.png") no-repeat center
+  background-size 28px 28px
+
+
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+  // background: rgba(240,240,240,0.2);
+  // border-radius: 10px;
+
+  
+}
+ 
+/*定义滚动条轨道 内阴影+圆角*/
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 0px rgba(240, 240, 240, .5);
+  border-radius: 10px;
+  // box-shadow: inset 0 0 0px rgba(240,240,240,0.5);
+  
+}
+ 
+/*定义滑块 内阴影+圆角*/
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  box-shadow: inset 0 0 0px rgba(240, 240, 240, .5);
+  // box-shadow: inset 0 0 6px rgb(255 255 255);
+  
+}
+
+
+@keyframes rotatemove {
+  from{
+    transform rotate(90deg) 
+  }
+  to{
+    transform rotate(0deg) 
+  }
+}
+
+
+/* 高度 */
+@media screen and (min-height: 876px) 
+  .profileWrapper 
+    .swiper-container 
+     .swiper-wrapper
+       .swiper-content
+        height 440px
+        padding 16px
+        box-sizing border-box
+
+
+        .content
+          font-size 18px
+
+  .icon-back,.icon-music
+      width 44px
+      height 44px
+      
+  .wrapper
+    // height 76px
+    // top calc(100% - 76px)
+
+    &.on
+      height 208px
+
+    .icon-back
+      width 44px
+      height 44px
+      
+      a 
+        background url(../images/icon-back.png) no-repeat center;
+        background-size 44px 44px
+        
+
+
+    .icon-swiper
+      width 44px
+      height 44px
+      
+      a 
+        background url(../images/icon-swiper.png) no-repeat center;
+        background-size 44px 44px
+
+    .swiper-container
+      margin-top 68px
+      .swiper-slide 
+        width 120px
+
+        .sceneName
+          height 28px
+          line-height 28px
+          font-size 16px
+
+
+.guide-layer 
+  background url("../images/guide-bg.png") fixed center/cover
+  // background-size 100% auto
+  position fixed
+  top 0
+  left 0
+  width 100%
+  height 100%
+  
+  .guide-bg
+    position absolute
+    display block
+    width 100%
+    height 100%
+    background rgba(0,0,0,0.6) 
+
+  .guide
+    width 90px
+    height 90px
+    position absolute
+    left 50%
+    bottom 30vh
+    margin-left 34px
+    border-radius 50%
+    overflow hidden
+    
+
+    .guideBackground
+      display block
+      width 100%
+      height 100%
+      
+    &::before
+      content ''
+      display block
+      width 100%
+      height 100%
+
+    &::after
+      content ''
+      display block
+      width 50px
+      height 50px
+      background url("../skin/spotLight.png") center
+      background-size 50px auto
+      position absolute
+      left 50% 
+      top 50% 
+      margin-left -25px
+      margin-top -35px
+      animation:run 1s steps(1) 0s infinite both;
+
+  .icon-guide
+    background url("../images/icon-guide.png");
+    width 72px
+    height 78px
+    position absolute
+    left 50%
+    bottom 30vh
+    transform  translateY(38px)
+    margin-left 60px
+    animation show 1s ease-out 0s  
+    animation-iteration-count 8
+    display none
+    
+
+    & > div
+      display inline-block 
+      padding 8px 19px 
+      width 96px 
+      background rgba(6,22,22,0.6) 
+      box-shadow 0px 2px 8px 0px rgb(0 0 0 / 50%) 
+      border-radius 10px 0px 10px 0px 
+      border 1px solid #47dbe2 
+      position absolute 
+      bottom -36px 
+      left 50%
+      margin-left -48px
+
+  .guide-click-layer
+    opacity 0
+    display none
+    background #f00
+
+    &::after,&::before
+      display none
+
+  .introduce,.guider
+    display none
+
+.guide-first
+
+  .guide-bg
+    display none
+
+
+  .guide
+    top 50%
+    left 50%
+    transform translate(-50%,-50%)
+    margin-left 0
+
+    &::before 
+      content ''
+      display block
+      background url("../images/guide-bg.png") center/cover fixed
+      // background-size 100% auto
+      display none
+
+  .icon-guide
+    display block 
+    bottom 50%
+    left 50%
+    transform translate(0,90px)
+    margin-left 0
+
+  .guide-click-layer
+    display block
+
+  &.on
+    z-index 1
+
+.guide-next 
+  background url("../images/guide-bg2.jpg") left top/cover 
+  
+
+  .guide
+    bottom 0
+    left  0
+    margin-left 48px
+
+    &::before 
+      background url("../images/guide-bg2.jpg") left top/cover fixed
+      
+
+    &::after
+      background url("../images/icon.png") 
+      background-position 0 60px
+      width 60px
+      height 60px
+      margin-top -30px
+      margin-left -30px
+      transform scale(0.6)
+      animation none
+      
+  .icon-guide
+    display none
+
+  .introduce
+    display block
+    position absolute
+    bottom 60px
+    left 148px
+    box-shadow 0px 2px 8px 0px rgb(0 0 0 / 50%)
+    background rgba(6,22,22,0.6)
+    margin-bottom 24px
+    border 1px solid #47dbe2
+    border-radius 20px 0px 20px 0px
+    padding 16px 32px
+    box-sizing border-box
+    width 280px
+
+  .guider
+    display block
+    position absolute
+    bottom 40px
+    left 400px
+    transform rotateY(180deg)
+    height 76%
+
+    img 
+      height 100%
+  
+.guide-next2
+  background url("../images/guide-bg2.png") left top/cover fixed
+
+  .guide 
+    bottom auto
+    left 30%
+
+    &::after
+      display none
+
+  .guide-click-layer
+    transform scale(2.2)
+
+  .introduce
+    bottom 146px 
+    left 250px 
+
+  .guider
+    left 520px
+
+  .guide-bg
+    display none
+
+@keyframes run {
+  0% {
+    background-position: 0 0
+  }
+  10%{
+    background-position:  0 100%
+  }
+  20%{
+    background-position:  0 200%
+  }
+  30%{
+    background-position:  0 300%
+  }
+  40%{
+    background-position:  0 400%
+  }
+  50%{
+    background-position:  0 500%
+  }
+  60%{
+    background-position:  0 600%
+  }
+  70%{
+    background-position:  0 700%
+  }
+  80%{
+    background-position:  0 800%
+  }
+  90%{
+    background-position:  0 900%
+  }
+  100%{
+    background-position:  0 1000%
+  }
+}
+
+@keyframes show {
+  0% {
+    opacity: .6
+  }
+  50%{
+    opacity: 1
+  }
+  100%{
+    opacity: .6
+  }
+}
+
+
+// @media screen and (max-width: 736px)
+//   .guide-next2
+//     .guide-click-layer
+//       left 322px
+
+// @media screen and (max-height: 1600px)
+//   .guide-next2
+//     .guide-click-layer
+//       top 572px
+//       left 468px
+//       transform scale(4.5)
+//       display block
+//       opacity 1
+
+// @media screen and (max-height: 1400px)
+//   .guide-next2
+//     .guide-click-layer
+//       top 474px
+//       left 468px
+//       transform scale(4.5)
+//       display block
+//       opacity 1
+
+// @media screen and (max-height: 1200px)
+//   .guide-next2
+//     .guide-click-layer
+//       top 408px
+//       left 408px
+//       display block
+//       opacity 1
+
+
+// @media screen and (max-height: 960px)
+//   .guide-next2
+//     .guide-click-layer
+//       top 342px
+//       left 322px
+//       display block
+//       opacity 1
+//       transform scale(4.5)
+
+
+// @media screen and (max-height: 414px)
+//   .guide-layer 
+//     .guide
+//       bottom 24vh
+//       margin-left 0
+      
+
+//   .guide-next
+//     .guide
+//       bottom 0
+
+//   .guide-next2
+//     .guide-click-layer
+//       display block
+//       opacity 1
+//       bottom auto
+//       top 30vh
+//       left 21%
+//       transform scale(1.5)
+
+@media screen and (max-height: 375px) 
+  .profileWrapper 
+    .swiper-container 
+     .swiper-wrapper
+       padding-top 16%
+
+  .profileWrapper .swiper-button-next, .profileWrapper .swiper-button-prev
+    margin-top 8%
+
+@media screen and (max-height: 360px) 
+  .profileWrapper 
+    .swiper-container 
+     .swiper-wrapper
+       padding-top 16%
+
+  .profileWrapper .swiper-button-next, .profileWrapper .swiper-button-prev
+    margin-top 8%
+
+@media screen and (max-height: 320px) 
+  .profileWrapper 
+    .swiper-container 
+     .swiper-wrapper
+       padding-top 12%
+    
+  .profileWrapper .swiper-button-next, .profileWrapper .swiper-button-prev
+    margin-top 6%
+
+/* 肖像（坚屏）模式 */
+@media only screen and (orientation: portrait) {
+  // .rotateScreen.on{
+  //   z-index 6
+  // }
+  .intro {
+    z-index -1
+  }
+  .homepage{
+    .logo{
+      margin-bottom 160px
+    }
+
+  }
+}
+
+/* 全景（横屏）模式 */
+@media screen and (orientation: landscape) {
+  .rotateScreen.on{
+    z-index -1
+  }
+  .intro.on {
+    z-index 1
+  }
+  .icon-back {
+    top 30px
+    left 40px
+  }
+  .profileWrapper .icon-close a{
+    top 30px 
+  }
+  .wrapper{
+    padding 0 40px
+  }
+}
