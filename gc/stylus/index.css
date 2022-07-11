@@ -248,12 +248,33 @@ a:focus {
   align-items: flex-end;
   z-index: -1;
   font-size: 14px;
+  background: url("../images/intro_bg.jpg") no-repeat center/cover;
+}
+.intro .icon-buttons {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.intro .icon-buttons a {
+  display: block;
+  width: 60px;
+  height: 60px;
+  transform: scale(0.6, 0.6);
+  background: url("../images/icon.png") -60px -360px/120px 480px;
+  float: left;
+}
+.intro .icon-buttons a.icon-next {
+  background: url("../images/icon-next.png");
+}
+.intro .icon-buttons a.icon-bgSoundPlay.active {
+  background: url("../images/icon.png") 0 -300px/120px 480px;
 }
 .intro .guider {
-  height: 76%;
+  height: 70%;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  align-self: flex-end;
 }
 .intro .guider img {
   height: 100%;
@@ -277,8 +298,8 @@ a:focus {
   width: 96px;
   height: 32px;
   line-height: 32px;
-  background: #22777b;
-  border-radius: 32px;
+  background: #125457;
+  border-radius: 8px;
   text-align: center;
   color: #fff;
   display: none;
@@ -298,6 +319,108 @@ a:focus {
 }
 .intro .container .buttons.on a[data-id='next'] {
   display: none;
+}
+.intro .container.intro-swiper-container {
+  position: relative;
+  width: 100%;
+  box-shadow: none;
+  border: 0;
+  background: none;
+}
+.intro .container.intro-swiper-container>.swiper {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+}
+.intro .container.intro-swiper-container>.swiper>.swiper-wrapper>.swiper-slide {
+  height: 72vh;
+  box-shadow: 0px 2px 10px 0px rgba(9,55,58,0.4);
+  padding: 16px;
+  box-sizing: border-box;
+  font-size: 12px;
+  background: rgba(34,119,123,0.8) url("../images/icon-swiper-bottom.png") no-repeat right bottom;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+}
+.intro .container.intro-swiper-container>.swiper>.swiper-wrapper>.swiper-slide:first-child::before {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  content: " ";
+  display: block;
+  background: url("../images/icon-swiper-top.png") no-repeat left top;
+  background-size: cover;
+}
+.intro .container.intro-swiper-container>.swiper>.swiper-wrapper>.swiper-slide .title {
+  text-align: center;
+}
+.intro .container.intro-swiper-container>.swiper>.swiper-wrapper>.swiper-slide .title img {
+  max-height: 22px;
+}
+.intro .container.intro-swiper-container>.swiper>.swiper-wrapper>.swiper-slide .subtitle {
+  text-align: left;
+  margin-bottom: 8px;
+}
+.intro .container.intro-swiper-container>.swiper>.swiper-wrapper>.swiper-slide .subtitle p {
+  position: relative;
+  display: inline-block;
+}
+.intro .container.intro-swiper-container>.swiper>.swiper-wrapper>.swiper-slide .subtitle p::after {
+  content: '';
+  display: block;
+  height: 1px;
+  background: linear-gradient(270deg, rgba(255,255,255,0) 0%, #fff 48%, rgba(255,255,255,0) 100%);
+}
+.intro .container.intro-swiper-container>.swiper>.swiper-wrapper>.swiper-slide .subtitle .subtitleEn {
+  font-size: 12px;
+  transform: scale(0.9);
+  transform-origin: left;
+  white-space: nowrap;
+}
+.intro .container.intro-swiper-container>.swiper>.swiper-wrapper>.swiper-slide .content {
+  letter-spacing: 2px;
+  font-weight: 100;
+  box-sizing: border-box;
+  text-indent: 2.2em;
+  position: relative;
+  height: calc(100% - 16px - 26px);
+  padding-right: 8px;
+  box-sizing: border-box;
+  overflow-y: hidden;
+}
+.intro .container.intro-swiper-container>.swiper>.swiper-wrapper>.swiper-slide .content .swiper-slide {
+  height: auto;
+}
+.intro .container.intro-swiper-container>.swiper>.swiper-wrapper>.swiper-slide .content .swiper-slide .swiper-text {
+  font-weight: 100;
+}
+.intro .container.intro-swiper-container>.swiper>.swiper-wrapper>.swiper-slide .content .icon-star {
+  background: url("../images/icon-star.png") no-repeat left 4px;
+  background-size: 6px 6px;
+  text-indent: 0;
+  padding-left: 12px;
+  font-weight: 100;
+}
+.intro .container.intro-swiper-container .buttons {
+  opacity: 0;
+}
+.intro .container.regular {
+  width: auto;
+  background: rgba(34,119,123,0.8);
+  box-shadow: 0px 2px 10px 0px rgba(9,55,58,0.4);
+  border-radius: 0;
+}
+.intro .container.regular .intro-swiper {
+  opacity: 0;
+  z-index: -1;
+}
+.intro .container.regular .buttons {
+  opacity: 1;
 }
 .wrapper {
   position: fixed;
@@ -379,28 +502,36 @@ a:focus {
 }
 .profileWrapper {
   position: fixed;
-  top: 0;
-  z-index: 4;
+  bottom: 0;
   width: 100%;
+  height: 100%;
+  padding: 0 20px;
   box-sizing: border-box;
+  display: flex;
+  align-items: flex-end;
+  font-size: 14px;
 }
 .profileWrapper::before {
   display: block;
   content: '';
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.9);
+  background: rgba(0,0,0,0.4);
   position: fixed;
   top: 0;
   left: 0;
 }
-.profileWrapper .title {
-  position: fixed;
-  top: 16px;
-  width: 80%;
-  height: 22px;
-  text-align: center;
-  margin: auto 10%;
+.profileWrapper .guider {
+  height: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-self: flex-end;
+  position: relative;
+}
+.profileWrapper .guider img {
+  height: 100%;
+  max-height: 373px;
 }
 .profileWrapper .icon-close {
   position: fixed;
@@ -422,114 +553,125 @@ a:focus {
   background: #22777b url("../images/icon-close.png") no-repeat center;
   background-size: 28px 28px;
 }
-.profileWrapper .swiper-container .swiper-wrapper {
-  padding-top: 20%;
-  box-sizing: border-box;
+.profileWrapper>.swiper-container {
+  width: 100%;
+  margin-bottom: 24px;
 }
-.profileWrapper .swiper-container img {
+.profileWrapper>.swiper-container img {
   max-width: 100%;
   max-height: 100%;
   border: 2px solid #fff;
   box-sizing: border-box;
 }
-.profileWrapper .swiper-container img.on {
+.profileWrapper>.swiper-container img.on {
   border-color: #39eef5;
 }
-.profileWrapper .swiper-container .swiper-slide {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 0;
-  border-top-left-radius: 50px;
-  border-bottom-right-radius: 50px;
-  border: 8px solid #22777b;
+.profileWrapper>.swiper-container>.swiper-wrapper {
   box-sizing: border-box;
-  background: rgba(255,255,255,0.4);
-  padding: 8px 16px;
-  height: calc(100% - 80px);
 }
-.profileWrapper .swiper-container .swiper-slide .brand {
-  background: #7bbc4d;
-  width: 18%;
-  height: calc(100% + 16px);
-  position: absolute;
-  bottom: -8px;
-  left: calc(-18% - 8px);
-}
-.profileWrapper .swiper-container .swiper-slide .brand::after {
-  content: '';
-  display: block;
-  width: 52px;
-  height: 52px;
-  line-height: 100px;
-  text-align: center;
-  background-image: radial-gradient(200px at 51px 0px, transparent 50px, #7bbc4d 50px);
-  transform: rotate(90deg);
-  position: absolute;
-  right: -50px;
-}
-.profileWrapper .swiper-container .swiper-slide .brand .title {
-  position: absolute;
-  top: -66px;
-  height: 66px;
-  width: 200%;
-  background: #7bbc4d;
-  border-top-right-radius: 36px;
-  padding-right: 18px;
-  padding-left: 18%;
+.profileWrapper>.swiper-container>.swiper-wrapper>.swiper-slide {
+  height: 72vh;
+  box-shadow: 0px 2px 10px 0px #093704;
+  padding: 16px;
   box-sizing: border-box;
-  margin: 0;
+  font-size: 12px;
+  background: rgba(34,119,123,0.8) url("../images/icon-swiper-bottom.png") no-repeat right bottom;
+  background-size: cover;
 }
-.profileWrapper .swiper-container .swiper-slide .brand .title::before {
-  display: block;
-  content: '';
-  height: 80%;
-  margin-top: 10%;
-  background: url("../images/swiper-logo.png") no-repeat left center;
-  background-size: contain;
-}
-.profileWrapper .swiper-container .swiper-slide .swiper-content {
-  height: 48vh;
-}
-.profileWrapper .swiper-container .swiper-slide .swiper-content .content {
-  font-size: 14px;
+.profileWrapper>.swiper-container>.swiper-wrapper>.swiper-slide .swiper-content {
+  font-size: 12px;
   padding-bottom: 16px;
-  overflow-y: scroll;
   height: 100%;
   box-sizing: border-box;
   text-align: justify;
   word-break: break-all;
   overflow-wrap: break-word;
+  font-weight: 100;
+  letter-spacing: 2px;
+  position: relative;
+  word-break: break-word;
 }
-.profileWrapper .swiper-container .swiper-slide .swiper-content .content h1 {
-  text-align: center;
-  border-top: 1px solid #fff;
-  border-bottom: 1px solid #fff;
-  width: 88%;
-  margin: 0 auto 16px auto;
-  font-weight: bold;
-  font-size: 16px;
-  line-height: 24px;
+.profileWrapper>.swiper-container>.swiper-wrapper>.swiper-slide .swiper-content .content {
+  position: relative;
+  height: calc(100% - 42px);
+  overflow-y: hidden;
+  padding-right: 8px;
 }
-.profileWrapper .swiper-container .swiper-slide .swiper-content .content h1 p {
-  font-size: 0.8em;
+.profileWrapper>.swiper-container>.swiper-wrapper>.swiper-slide .swiper-content .content .swiper-slide {
+  height: auto;
+}
+.profileWrapper>.swiper-container>.swiper-wrapper>.swiper-slide .swiper-content .text {
+  font-weight: 100;
+  text-indent: 2.5em;
+}
+.profileWrapper>.swiper-container>.swiper-wrapper>.swiper-slide .swiper-content .textEn {
+  font-weight: 100;
+  text-indent: 2.5em;
+  word-break: break-word;
+  text-align: start;
+}
+.profileWrapper>.swiper-container>.swiper-wrapper>.swiper-slide .swiper-content sup {
+  font-size: 12px;
+  vertical-align: super;
+}
+.profileWrapper>.swiper-container>.swiper-wrapper>.swiper-slide .swiper-content sub {
+  font-size: 12px;
+  vertical-align: sub;
+}
+.profileWrapper>.swiper-container>.swiper-wrapper>.swiper-slide .swiper-content .icon-singleSound {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: url("../images/icon-singleMusicon.png") no-repeat;
+  background-size: cover;
+  display: block;
+  width: 28px;
+  height: 16px;
+  display: none;
+}
+.profileWrapper>.swiper-container>.swiper-wrapper>.swiper-slide .swiper-content .icon-singleSound.mute {
+  background: url("../images/icon-singleMusic.png") no-repeat;
+  background-size: cover;
+}
+.profileWrapper>.swiper-container>.swiper-wrapper>.swiper-slide .swiper-content h1 {
+  font-size: 12px;
+  font-weight: 100;
+  margin-bottom: 8px;
+}
+.profileWrapper>.swiper-container>.swiper-wrapper>.swiper-slide .swiper-content h1 p {
+  font-size: 12px;
   font-weight: normal;
-  transform: scale(0.8);
+  transform: scale(0.5);
   line-height: normal;
+  opacity: 0;
 }
-.profileWrapper .swiper-container .swiper-slide .swiper-content .content h2 {
+.profileWrapper>.swiper-container>.swiper-wrapper>.swiper-slide .swiper-content h1 span {
+  display: inline-block;
+}
+.profileWrapper>.swiper-container>.swiper-wrapper>.swiper-slide .swiper-content h1 span::after {
+  content: '';
+  display: block;
+  height: 1px;
+  background: linear-gradient(270deg, rgba(255,255,255,0) 0%, #fff 48%, rgba(255,255,255,0) 100%);
+}
+.profileWrapper>.swiper-container>.swiper-wrapper>.swiper-slide .swiper-content h2 {
   font-weight: bold;
+  background: url("../images/icon-star.png") no-repeat left 4px;
+  background-size: 6px 6px;
+  text-indent: 0;
+  padding-left: 12px;
+  margin-bottom: 8px;
 }
-.profileWrapper .swiper-container .swiper-slide .swiper-content .content h3 {
+.profileWrapper>.swiper-container>.swiper-wrapper>.swiper-slide .swiper-content h3 {
   font-weight: bold;
   margin-bottom: 6px;
 }
-.profileWrapper .swiper-container .swiper-slide .swiper-content .content .dot {
+.profileWrapper>.swiper-container>.swiper-wrapper>.swiper-slide .swiper-content .dot {
   position: relative;
   padding-left: 20px;
   font-weight: bold;
 }
-.profileWrapper .swiper-container .swiper-slide .swiper-content .content .dot::before {
+.profileWrapper>.swiper-container>.swiper-wrapper>.swiper-slide .swiper-content .dot::before {
   content: '';
   display: inline-block;
   width: 6px;
@@ -541,11 +683,11 @@ a:focus {
   top: 50%;
   transform: translateY(-50%);
 }
-.profileWrapper .swiper-container .swiper-slide .swiper-content .content .img {
+.profileWrapper>.swiper-container>.swiper-wrapper>.swiper-slide .swiper-content .img {
   text-align: center;
   position: relative;
 }
-.profileWrapper .swiper-container .swiper-slide .swiper-content .content .img .icon-play {
+.profileWrapper>.swiper-container>.swiper-wrapper>.swiper-slide .swiper-content .img .icon-play {
   position: absolute;
   top: 0;
   left: 0;
@@ -555,15 +697,18 @@ a:focus {
   background-size: 48px 48px;
   pointer-events: none;
 }
-.profileWrapper .swiper-container .swiper-slide .swiper-content .content .img img {
+.profileWrapper>.swiper-container>.swiper-wrapper>.swiper-slide .swiper-content .img img {
   border-color: transparent;
 }
-.profileWrapper .swiper-container .swiper-slide .swiper-content .content embed,
-.profileWrapper .swiper-container .swiper-slide .swiper-content .content iframe,
-.profileWrapper .swiper-container .swiper-slide .swiper-content .content video {
+.profileWrapper>.swiper-container>.swiper-wrapper>.swiper-slide .swiper-content embed,
+.profileWrapper>.swiper-container>.swiper-wrapper>.swiper-slide .swiper-content iframe,
+.profileWrapper>.swiper-container>.swiper-wrapper>.swiper-slide .swiper-content video {
   width: 100%;
 }
-.profileWrapper .swiper-container .swiper-slide::after {
+.profileWrapper>.swiper-container>.swiper-wrapper>.swiper-slide.swiper-slide-active .icon-singleSound {
+  display: block;
+}
+.profileWrapper>.swiper-container>.swiper-wrapper>.swiper-slide::after {
   content: '';
   display: block;
   width: calc(100% + 2px);
@@ -617,8 +762,8 @@ a:focus {
 }
 .profileWrapper .imgDiv img,
 .profileWrapper .imgDiv video {
-  max-width: 100%;
-  max-height: 100%;
+  max-width: 80%;
+  max-height: 80%;
 }
 .swiper-slide.on img {
   transition: all 0.8s cubic-bezier(0.39, 0.58, 0.57, 1);
@@ -660,10 +805,6 @@ a:focus {
   background: rgba(34,119,123,0.8) url("../images/icon-musicon.png") no-repeat center;
   background-size: 28px 28px;
 }
-::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-}
 /*定义滚动条轨道 内阴影+圆角*/
 ::-webkit-scrollbar-track {
   box-shadow: inset 0 0 0px rgba(240,240,240,0.5);
@@ -676,14 +817,6 @@ a:focus {
 }
 /* 高度 */
 @media screen and (min-height: 876px) {
-  .profileWrapper .swiper-container .swiper-wrapper .swiper-content {
-    height: 440px;
-    padding: 16px;
-    box-sizing: border-box;
-  }
-  .profileWrapper .swiper-container .swiper-wrapper .swiper-content .content {
-    font-size: 18px;
-  }
   .icon-back,
   .icon-music {
     width: 44px;
@@ -787,14 +920,13 @@ a:focus {
   display: inline-block;
   padding: 8px 19px;
   width: 96px;
-  background: rgba(6,22,22,0.6);
-  box-shadow: 0px 2px 8px 0px #000;
-  border-radius: 10px 0px 10px 0px;
   border: 1px solid #47dbe2;
   position: absolute;
   bottom: -36px;
   left: 50%;
   margin-left: -48px;
+  background: rgba(34,119,123,0.8);
+  box-shadow: 0px 2px 10px 0px rgba(9,55,58,0.4);
 }
 .guide-layer .guide-click-layer {
   opacity: 0;
@@ -864,24 +996,23 @@ a:focus {
 .guide-next .introduce {
   display: block;
   position: absolute;
-  bottom: 60px;
+  bottom: 30%;
   left: 148px;
-  box-shadow: 0px 2px 8px 0px #000;
-  background: rgba(6,22,22,0.6);
+  background: rgba(34,119,123,0.8);
+  box-shadow: 0px 2px 10px 0px rgba(9,55,58,0.4);
   margin-bottom: 24px;
   border: 1px solid #47dbe2;
-  border-radius: 20px 0px 20px 0px;
   padding: 16px 32px;
   box-sizing: border-box;
-  width: 280px;
+  width: 340px;
 }
 .guide-next .guider {
   display: block;
   position: absolute;
   bottom: 40px;
-  left: 400px;
+  left: 490px;
   transform: rotateY(180deg);
-  height: 76%;
+  height: 70%;
 }
 .guide-next .guider img {
   height: 100%;
@@ -909,32 +1040,11 @@ a:focus {
 .guide-next2 .guide-bg {
   display: none;
 }
-@media screen and (max-height: 375px) {
-  .profileWrapper .swiper-container .swiper-wrapper {
-    padding-top: 16%;
-  }
-  .profileWrapper .swiper-button-next,
-  .profileWrapper .swiper-button-prev {
-    margin-top: 8%;
-  }
+.swiper-container-vertical .swiper-scrollbar {
+  right: 0;
 }
-@media screen and (max-height: 360px) {
-  .profileWrapper .swiper-container .swiper-wrapper {
-    padding-top: 16%;
-  }
-  .profileWrapper .swiper-button-next,
-  .profileWrapper .swiper-button-prev {
-    margin-top: 8%;
-  }
-}
-@media screen and (max-height: 320px) {
-  .profileWrapper .swiper-container .swiper-wrapper {
-    padding-top: 12%;
-  }
-  .profileWrapper .swiper-button-next,
-  .profileWrapper .swiper-button-prev {
-    margin-top: 6%;
-  }
+.swiper-container-vertical .swiper-scrollbar .swiper-scrollbar-drag {
+  background: #fff;
 }
 /* 肖像（坚屏）模式 */
 @media only screen and (orientation: portrait) {
@@ -962,6 +1072,32 @@ a:focus {
   }
   .wrapper {
     padding: 0 40px;
+  }
+}
+@media screen and (min-width: 960px) {
+  .intro .container.intro-swiper-container>.swiper>.swiper-wrapper {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    height: 72vh;
+    flex-wrap: wrap;
+  }
+  .intro .container.intro-swiper-container>.swiper>.swiper-wrapper>.swiper-slide {
+    width: calc(25% - 14px) !important;
+    margin-right: 14px;
+  }
+  .intro .container.intro-swiper-container>.swiper>.swiper-wrapper>.swiper-slide:not(:first-child) {
+    height: 35vh;
+    float: left;
+  }
+  .intro .container.intro-swiper-container>.swiper>.swiper-wrapper>.swiper-slide .subtitle {
+    font-size: 14px;
+  }
+  .intro .container.intro-swiper-container>.swiper>.swiper-wrapper>.swiper-slide .subtitle .subtitleEn {
+    transform: scale(0.9);
+  }
+  .intro .container.intro-swiper-container>.swiper>.swiper-wrapper>.swiper-slide .title img {
+    max-height: 26px;
   }
 }
 @-moz-keyframes rotatemove {

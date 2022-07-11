@@ -101,7 +101,7 @@
 	<events name="currentpano" onnewpano="playsound(bgsnd, '%SWFPATH%/sound/bg.mp3', 0);" onremovepano="stopsound(bgsnd);" />
 
 	<!-- a button to pause/play the sound -->
-	<layer name="snd" url="./images/icon.png" align="lefttop" x="60" y="10" alpha="1" scale="0.6" onover="switch(crop, 60|360|60|60, 0|360|60|60);switch(crop, 60|300|60|60, 0|300|60|60);" onout="switch(crop, 0|360|60|60, 60|360|60|60);switch(crop, 0|300|60|60, 60|300|60|60);" crop="60|360|60|60" keep="true" onclick="pausesoundtoggle(bgsnd); switch(crop, 0|360|60|60, 60|300|60|60); switch(crop, 60|360|60|60, 0|300|60|60);" />
+	<layer name="snd" url="./images/icon.png" align="lefttop" x="60" y="10" alpha="1" scale="0.6" onover="switch(crop, 60|360|60|60, 0|360|60|60);switch(crop, 60|300|60|60, 0|300|60|60);" onout="switch(crop, 0|360|60|60, 60|360|60|60);switch(crop, 0|300|60|60, 60|300|60|60);" crop="60|360|60|60" keep="true" onclick="js(actionName('bgSoundEvent'));pausesoundtoggle(bgsnd); switch(crop, 0|360|60|60, 60|300|60|60); switch(crop, 60|360|60|60, 0|300|60|60);" />
 
 
 
@@ -178,7 +178,7 @@
 				<layer name="spot13" style="spot" x="469" y="230" />
 
 				<!-- 激活的热点 zorder=3 开始时候隐藏，在这里是一个绿色的地图点， 表示当前的场景-->
-				<layer name="activespot" url="skin/vtourskin_hotspot.png" scale="1.2" oy="-17" align="lefttop" edge="center" zorder="3" visible="false"/>
+				<layer name="activespot" url="skin/vtourskin_hotspot2.png" scale="1.2" oy="-17" align="lefttop" edge="center" zorder="3" visible="false"/>
 
 			</layer>
 		</layer>
@@ -256,7 +256,7 @@
 	</action>
 
 	<!-- 地图点中相同的代码，都写在了style里面，修改的时候只需要修改style里面的代码，提高了效率。在onclick里，先是用subtxt得出spot后面的数字，也就是index，然后检查是否点击的热点就是当前场景，因为没有必要点击当前场景的热点又载入一遍，如果是点击其他的热点，则载入其他场景，载入场景的loadscene中利用了之前得到的spotid，这样就不用每次都写场景的名字了。-->
-     <style name="spot" url="skin/vtourskin_hotspot.png" scale="0.8" oy="-17" align="lefttop" edge="center" zorder="2" onclick="subtxt(spotid,get(name),4,2);if(spotid != scene[get(xml.scene)].index,  
+     <style name="spot" url="skin/vtourskin_hotspot2.png" scale="0.8" oy="-17" align="lefttop" edge="center" zorder="2" onclick="subtxt(spotid,get(name),4,2);if(spotid != scene[get(xml.scene)].index,  
   loadscene(get(scene[get(spotid)].name),null,MERGE,BLEND(1)); );" />  
 
 	<!-- 激活热点 - %1 = 当前雷达的方向值heading -->
@@ -311,7 +311,7 @@
 		
 		<hotspot name="spot1"  url="skin/vtourskin_spots.png" text="公园介绍" scale="0.6" ath="0.040" atv="0.074" distorted="false" zoom="false" linkedscene="scene_01______" onloaded="do_crop_animation(100,101, 60);add_all_the_time_tooltip_for_VR()" onover="do_show_tooltips2" onout="do_hide_tooltips2" onclick="skin_hotspotstyle_click();" />
 
-		<hotspot name="spot3"  url="skin/vtourskin_spots.png" text="食物与碳足迹" scale="0.6" ath="0.034" atv="-0.050" distorted="false" zoom="false" linkedscene="scene_02____________" onloaded="do_crop_animation(100,101, 60);add_all_the_time_tooltip_for_VR()" onover="do_show_tooltips2" onout="do_hide_tooltips2" onclick="skin_hotspotstyle_click();" />
+		<hotspot name="spot3"  url="skin/vtourskin_spots.png" text="鼓励公众参与" scale="0.6" ath="0.034" atv="-0.050" distorted="false" zoom="false" linkedscene="scene_02____________" onloaded="do_crop_animation(100,101, 60);add_all_the_time_tooltip_for_VR()" onover="do_show_tooltips2" onout="do_hide_tooltips2" onclick="skin_hotspotstyle_click();" />
 
 		<hotspot name="spot8"  url="skin/vtourskin_spots.png" text="低碳再生建材" scale="0.6" ath="0.034" atv="-0.112" distorted="false" zoom="false" linkedscene="scene_03____________" onloaded="do_crop_animation(100,101, 60);add_all_the_time_tooltip_for_VR()" onover="do_show_tooltips2" onout="do_hide_tooltips2" onclick="skin_hotspotstyle_click();" />
 
@@ -321,7 +321,7 @@
 
 		<hotspot name="spot11"  url="skin/vtourskin_spots.png" text="“光储直柔”低碳电力新型配电系统" scale="0.6" ath="0.232" atv="-0.173" distorted="false" zoom="false" linkedscene="scene_06_________" onloaded="do_crop_animation(100,101, 60);add_all_the_time_tooltip_for_VR()" onover="do_show_tooltips2" onout="do_hide_tooltips2" onclick="skin_hotspotstyle_click();" />
 
-		<hotspot name="spot6"  url="skin/vtourskin_spots.png" text="萤石路" scale="0.6" ath="0.231" atv="-0.133" distorted="false" zoom="false" linkedscene="scene_07_________" onloaded="do_crop_animation(100,101, 60);add_all_the_time_tooltip_for_VR()" onover="do_show_tooltips2" onout="do_hide_tooltips2" onclick="skin_hotspotstyle_click();" />
+		<hotspot name="spot6"  url="skin/vtourskin_spots.png" text="自发光路面" scale="0.6" ath="0.231" atv="-0.133" distorted="false" zoom="false" linkedscene="scene_07_________" onloaded="do_crop_animation(100,101, 60);add_all_the_time_tooltip_for_VR()" onover="do_show_tooltips2" onout="do_hide_tooltips2" onclick="skin_hotspotstyle_click();" />
 
 		<!-- <hotspot name="spot9"  url="skin/vtourskin_spots.png" text="垃圾分类回收及资源化利用" scale="0.6" ath="0.225" atv="-0.069" distorted="false" zoom="false" linkedscene="scene_08__________________" onloaded="do_crop_animation(100,101, 60);add_all_the_time_tooltip_for_VR()" onover="do_show_tooltips2" onout="do_hide_tooltips2" onclick="skin_hotspotstyle_click();" /> -->
 
@@ -439,11 +439,14 @@
 			<cube url="panos/01______.tiles/vr/pano_%s.jpg" />
 		</image>
 
-		<!-- <hotspot name="spot1" style="skin_hotspotstyle" ath="-51.976" atv="-10.188" onclick="getSpot();"/> -->
+		<!-- <hotspot name="spot1" style="skin_hotspotstyle" ath="-51.550" atv="-8.600" onclick="getSpot();"/> -->
 		
 		<hotspot name="spot1" url="skin/vtourskin_spots.png" tooltip="公园介绍"  ath="-51.550" atv="-8.600" distorted="false" zoom="false" scale="0.6" spotid='profile-1' onloaded="do_crop_animation(100,101, 60);add_all_the_time_tooltip();if(distorted,add_tooltip2(get(linkedscene),1),add_all_the_time_tooltip(get(linkedscene),1));"    onclick="looktohotspot(get(name),65);js(actionName('showModal',get(spotid)););if(linkedscene, tween(scale,0.25,0.5); tween(oy,-20,0.5); tween(alpha,0,0.5); looktohotspot(); loadscene(get(linkedscene),null,MERGE,BLEND(1)); skin_updatescroll(); );"/>
 
-		<!-- <hotspot name="spot2" style="skin_hotspotstyle" ath="-51.550" atv="-8.600" linkedscene="scene_02____________" /> -->
+		<!--  -->
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="-1.658" atv="33.417" linkedscene="scene_04______" />
+		
+		
 
 	</scene>
 
@@ -458,10 +461,11 @@
 		<image hfov="1.00" vfov="0.563000" voffset="0.00">
 			<flat url="panos/11_________.tiles/l%l/%0v/l%l_%0v_%0h.jpg" multires="512,1536x866,3072x1730,6144x3460" />
 		</image>
-		<!-- <hotspot name="spot1" style="skin_hotspotstyle" ath="0.004" atv="-0.054" distorted="false" zoom="false" linkedscene="scene_12____________" /> -->
+		<!-- <hotspot name="spot1" style="skin_hotspotstyle" ath="0.004" atv="-0.054" distorted="false" zoom="false" linkedscene="undefined" /> -->
 
 		<!-- 不携带点位tooltip <hotspot name="spot1" url="skin/vtourskin_spots.png" tooltip="太阳能光伏发电系统"  ath="0.004" atv="-0.054" distorted="false" zoom="false" scale="0.6" linkedscene="scene_01_________" onloaded="do_crop_animation(100,101, 60);getSpot()" onover="do_show_tooltips" onout="do_hide_tooltips" onclick="skin_hotspotstyle_click();"/> -->
 		<hotspot name="spot1" url="skin/vtourskin_spots.png" tooltip="太阳能光伏发电系统"  ath="0.004" atv="-0.054" distorted="false" zoom="false" scale="0.6" spotid='profile-2' onloaded="do_crop_animation(100,101, 60);add_all_the_time_tooltip();if(distorted,add_tooltip2(get(linkedscene),1),add_all_the_time_tooltip(get(linkedscene),1));"    onclick="looktohotspot(get(name),65);js(actionName('showModal',get(spotid)););if(linkedscene, tween(scale,0.25,0.5); tween(oy,-20,0.5); tween(alpha,0,0.5); looktohotspot(); loadscene(get(linkedscene),null,MERGE,BLEND(1)); skin_updatescroll(); );"/>
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="-0.004" atv="0.121" distorted="false" zoom="false" linkedscene="scene_12____________" />
 
 		
 
@@ -484,9 +488,10 @@
 		<image if="webvr.isenabled OR device.mobilevr">
 			<cube url="panos/06_________.tiles/vr/pano_%s.jpg" />
 		</image>
-		<!-- <hotspot name="spot1" style="skin_hotspotstyle" ath="170.324" atv="-7.158" linkedscene="scene_07_________" /> -->
+		<!-- <hotspot name="spot1" style="skin_hotspotstyle" ath="170.324" atv="-7.158" linkedscene="undefined" /> -->
 
 		<hotspot name="spot1" url="skin/vtourskin_spots.png" tooltip="“光储直柔”低碳电力新型配电系统"  ath="170.324" atv="-7.158" distorted="false" zoom="false" scale="0.6" spotid='profile-3' onloaded="do_crop_animation(100,101, 60);add_all_the_time_tooltip();if(distorted,add_tooltip2(get(linkedscene),1),add_all_the_time_tooltip(get(linkedscene),1));"    onclick="looktohotspot(get(name),65);js(actionName('showModal',get(spotid)););if(linkedscene, tween(scale,0.25,0.5); tween(oy,-20,0.5); tween(alpha,0,0.5); looktohotspot(); loadscene(get(linkedscene),null,MERGE,BLEND(1)); skin_updatescroll(); );"/>
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="161.651" atv="23.527" linkedscene="scene_07_________" />
 
 		
 
@@ -508,9 +513,10 @@
 		<image if="webvr.isenabled OR device.mobilevr">
 			<cube url="panos/13_________.tiles/vr/pano_%s.jpg" />
 		</image>
-		<!-- <hotspot name="spot1" style="skin_hotspotstyle" ath="-23.831" atv="-1.052" linkedscene="scene_14______" /> -->
+		<!-- <hotspot name="spot1" style="skin_hotspotstyle" ath="-23.831" atv="-1.052" linkedscene="undefined" /> -->
 
 		<hotspot name="spot1" url="skin/vtourskin_spots.png" tooltip="环丁零碳不夜亭"   ath="-23.831" atv="-1.052" distorted="false" zoom="false" scale="0.6" spotid='profile-4' onloaded="do_crop_animation(100,101, 60);add_all_the_time_tooltip();if(distorted,add_tooltip2(get(linkedscene),1),add_all_the_time_tooltip(get(linkedscene),1));"    onclick="looktohotspot(get(name),65);js(actionName('showModal',get(spotid)););if(linkedscene, tween(scale,0.25,0.5); tween(oy,-20,0.5); tween(alpha,0,0.5); looktohotspot(); loadscene(get(linkedscene),null,MERGE,BLEND(1)); skin_updatescroll(); );"/>
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="-0.106" atv="21.425" linkedscene="scene_14______" />
 
 		
 
@@ -531,9 +537,11 @@
 		<image if="webvr.isenabled OR device.mobilevr">
 			<cube url="panos/04______.tiles/vr/pano_%s.jpg" />
 		</image>
-		<!-- <hotspot name="spot1" style="skin_hotspotstyle" ath="14.389" atv="-12.590" linkedscene="scene_05_________" /> -->
+		<!-- <hotspot name="spot1" style="skin_hotspotstyle" ath="14.389" atv="-8.590" linkedscene="undefined" /> -->
 
 		<hotspot name="spot1" url="skin/vtourskin_spots.png" tooltip="户外太阳能灯"  ath="14.389" atv="-8.590" distorted="false" zoom="false" scale="0.6" spotid='profile-5' onloaded="do_crop_animation(100,101, 60);add_all_the_time_tooltip();if(distorted,add_tooltip2(get(linkedscene),1),add_all_the_time_tooltip(get(linkedscene),1));"    onclick="looktohotspot(get(name),65);js(actionName('showModal',get(spotid)););if(linkedscene, tween(scale,0.25,0.5); tween(oy,-20,0.5); tween(alpha,0,0.5); looktohotspot(); loadscene(get(linkedscene),null,MERGE,BLEND(1)); skin_updatescroll(); );"/>
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="2.408" atv="13.154" linkedscene="scene_02____________" />
+		
 
 		
 
@@ -554,9 +562,10 @@
 		<image if="webvr.isenabled OR device.mobilevr">
 			<cube url="panos/14______.tiles/vr/pano_%s.jpg" />
 		</image>
-		<!-- <hotspot name="spot1" style="skin_hotspotstyle" ath="-26.318" atv="-2.436" linkedscene="scene_park" /> -->
+		<!-- <hotspot name="spot1" style="skin_hotspotstyle" ath="-26.318" atv="-2.436" linkedscene="undefined" /> -->
 
 		<hotspot name="spot1" url="skin/vtourskin_spots.png" tooltip="低碳公共卫生间"  ath="-26.318" atv="-2.436" distorted="false" zoom="false" scale="0.6" spotid='profile-6' onloaded="do_crop_animation(100,101, 60);add_all_the_time_tooltip();if(distorted,add_tooltip2(get(linkedscene),1),add_all_the_time_tooltip(get(linkedscene),1));"    onclick="looktohotspot(get(name),65);js(actionName('showModal',get(spotid)););if(linkedscene, tween(scale,0.25,0.5); tween(oy,-20,0.5); tween(alpha,0,0.5); looktohotspot(); loadscene(get(linkedscene),null,MERGE,BLEND(1)); skin_updatescroll(); );"/>
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="-0.105" atv="21.425" linkedscene="scene_06_________" />
 
 		
 
@@ -578,9 +587,10 @@
 		<image if="webvr.isenabled OR device.mobilevr">
 			<cube url="panos/12____________.tiles/vr/pano_%s.jpg" />
 		</image>
-		<!-- <hotspot name="spot1" style="skin_hotspotstyle" ath="69.794" atv="-0.500" linkedscene="scene_13_________" /> -->
+		<!-- <hotspot name="spot1" style="skin_hotspotstyle" ath="69.794" atv="-0.500" linkedscene="undefined" /> -->
 
 		<hotspot name="spot1" url="skin/vtourskin_spots.png" tooltip="中水雨水绿化灌溉系统"  ath="69.794" atv="-0.500" distorted="false" zoom="false" scale="0.6" spotid='profile-7' onloaded="do_crop_animation(100,101, 60);add_all_the_time_tooltip();if(distorted,add_tooltip2(get(linkedscene),1),add_all_the_time_tooltip(get(linkedscene),1));"    onclick="looktohotspot(get(name),65);js(actionName('showModal',get(spotid)););if(linkedscene, tween(scale,0.25,0.5); tween(oy,-20,0.5); tween(alpha,0,0.5); looktohotspot(); loadscene(get(linkedscene),null,MERGE,BLEND(1)); skin_updatescroll(); );"/>
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="71.874" atv="29.172" linkedscene="scene_05_________" />
 
 		
 
@@ -601,9 +611,10 @@
 		<image if="webvr.isenabled OR device.mobilevr">
 			<cube url="panos/03____________.tiles/vr/pano_%s.jpg" />
 		</image>
-		<!-- <hotspot name="spot1" style="skin_hotspotstyle" ath="70.015" atv="1.250" linkedscene="scene_04______" /> -->
+		<!-- <hotspot name="spot1" style="skin_hotspotstyle" ath="70.015" atv="1.250" linkedscene="undefined" /> -->
 
 		<hotspot name="spot1" url="skin/vtourskin_spots.png" tooltip="低碳再生建材"   ath="70.015" atv="1.250" distorted="false" zoom="false" scale="0.6" spotid='profile-8' onloaded="do_crop_animation(100,101, 60);add_all_the_time_tooltip();if(distorted,add_tooltip2(get(linkedscene),1),add_all_the_time_tooltip(get(linkedscene),1));"    onclick="looktohotspot(get(name),65);js(actionName('showModal',get(spotid)););if(linkedscene, tween(scale,0.25,0.5); tween(oy,-20,0.5); tween(alpha,0,0.5); looktohotspot(); loadscene(get(linkedscene),null,MERGE,BLEND(1)); skin_updatescroll(); );"/>
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="78.874" atv="29.405" linkedscene="scene_13_________" />
 
 		
 
@@ -624,9 +635,10 @@
 		<image if="webvr.isenabled OR device.mobilevr">
 			<cube url="panos/10____________.tiles/vr/pano_%s.jpg" />
 		</image>
-		<!-- <hotspot name="spot1" style="skin_hotspotstyle" ath="-164.704" atv="-5.802" linkedscene="scene_11_________" /> -->
+		<!-- <hotspot name="spot1" style="skin_hotspotstyle" ath="-164.704" atv="-5.802" linkedscene="undefined" /> -->
 
 		<hotspot name="spot1" url="skin/vtourskin_spots.png" tooltip="建筑垃圾就地消纳"  ath="-164.704" atv="-5.802" distorted="false" zoom="false" scale="0.6" spotid='profile-9' onloaded="do_crop_animation(100,101, 60);add_all_the_time_tooltip();if(distorted,add_tooltip2(get(linkedscene),1),add_all_the_time_tooltip(get(linkedscene),1));"    onclick="looktohotspot(get(name),65);js(actionName('showModal',get(spotid)););if(linkedscene, tween(scale,0.25,0.5); tween(oy,-20,0.5); tween(alpha,0,0.5); looktohotspot(); loadscene(get(linkedscene),null,MERGE,BLEND(1)); skin_updatescroll(); );"/>
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="171.785" atv="24.950" linkedscene="scene_09__________________-___" />
 
 		
 
@@ -647,9 +659,10 @@
 		<image if="webvr.isenabled OR device.mobilevr">
 			<cube url="panos/05_________.tiles/vr/pano_%s.jpg" />
 		</image>
-		<!-- <hotspot name="spot1" style="skin_hotspotstyle" ath="47.509" atv="0.417" linkedscene="scene_06_________" /> -->
+		<!-- <hotspot name="spot1" style="skin_hotspotstyle" ath="47.509" atv="0.417" linkedscene="undefined" /> -->
 
 		<hotspot name="spot1" url="skin/vtourskin_spots.png" tooltip="垃圾分类回收及资源化利用"  ath="47.509" atv="0.417" distorted="false" zoom="false" scale="0.6" spotid='profile-10' onloaded="do_crop_animation(100,101, 60);add_all_the_time_tooltip();if(distorted,add_tooltip2(get(linkedscene),1),add_all_the_time_tooltip(get(linkedscene),1));"    onclick="looktohotspot(get(name),65);js(actionName('showModal',get(spotid)););if(linkedscene, tween(scale,0.25,0.5); tween(oy,-20,0.5); tween(alpha,0,0.5); looktohotspot(); loadscene(get(linkedscene),null,MERGE,BLEND(1)); skin_updatescroll(); );"/>
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="40.027" atv="25.563" linkedscene="scene_10____________" />
 
 		
 
@@ -671,11 +684,12 @@
 		<image if="webvr.isenabled OR device.mobilevr">
 			<cube url="panos/09__________________-___.tiles/vr/pano_%s.jpg" />
 		</image>
-		<!-- <hotspot name="spot1" style="skin_hotspotstyle" ath="21.877" atv="-4.069" linkedscene="scene_10____________" /> -->
+		<!-- <hotspot name="spot1" style="skin_hotspotstyle" ath="21.877" atv="-4.069" linkedscene="undefined" /> -->
 
 		<hotspot name="spot1" url="skin/vtourskin_spots.png" tooltip="碳汇林" ath="21.877" atv="-4.069" distorted="false" zoom="false" scale="0.6" spotid='profile-11' onloaded="do_crop_animation(100,101, 60);add_all_the_time_tooltip();if(distorted,add_tooltip2(get(linkedscene),1),add_all_the_time_tooltip(get(linkedscene),1));"    onclick="looktohotspot(get(name),65);js(actionName('showModal',get(spotid)););if(linkedscene, tween(scale,0.25,0.5); tween(oy,-20,0.5); tween(alpha,0,0.5); looktohotspot(); loadscene(get(linkedscene),null,MERGE,BLEND(1)); skin_updatescroll(); );"/>
+		<hotspot name="spot2" url="skin/vtourskin_spots.png" tooltip="园林垃圾资源化处置" ath="-18.471" atv="-6.300" distorted="false" zoom="false" scale="0.6" spotid='profile-111' onloaded="do_crop_animation(100,101, 60);add_all_the_time_tooltip();if(distorted,add_tooltip2(get(linkedscene),1),add_all_the_time_tooltip(get(linkedscene),1));"    onclick="looktohotspot(get(name),65);js(actionName('showModal',get(spotid)););if(linkedscene, tween(scale,0.25,0.5); tween(oy,-20,0.5); tween(alpha,0,0.5); looktohotspot(); loadscene(get(linkedscene),null,MERGE,BLEND(1)); skin_updatescroll(); );"/>
+		<hotspot name="spot3" style="skin_hotspotstyle" ath="-0.210" atv="21.877" linkedscene="scene_01______" />
 
-		
 
 	</scene>
 
@@ -695,9 +709,10 @@
 		<image if="webvr.isenabled OR device.mobilevr">
 			<cube url="panos/07_________.tiles/vr/pano_%s.jpg" />
 		</image>
-		<!-- <hotspot name="spot1" style="skin_hotspotstyle" ath="58.976" atv="1.773" linkedscene="scene_08__________________" /> -->
+		<!-- <hotspot name="spot1" style="skin_hotspotstyle" ath="58.976" atv="1.773" linkedscene="undefined" /> -->
 
-		<hotspot name="spot1" url="skin/vtourskin_spots.png" tooltip="萤石路" ath="58.976" atv="1.773" distorted="false" zoom="false" scale="0.6" spotid='profile-12' onloaded="do_crop_animation(100,101, 60);add_all_the_time_tooltip();if(distorted,add_tooltip2(get(linkedscene),1),add_all_the_time_tooltip(get(linkedscene),1));"    onclick="looktohotspot(get(name),65);js(actionName('showModal',get(spotid)););if(linkedscene, tween(scale,0.25,0.5); tween(oy,-20,0.5); tween(alpha,0,0.5); looktohotspot(); loadscene(get(linkedscene),null,MERGE,BLEND(1)); skin_updatescroll(); );"/>
+		<hotspot name="spot1" url="skin/vtourskin_spots.png" tooltip="自发光路面" ath="58.976" atv="1.773" distorted="false" zoom="false" scale="0.6" spotid='profile-12' onloaded="do_crop_animation(100,101, 60);add_all_the_time_tooltip();if(distorted,add_tooltip2(get(linkedscene),1),add_all_the_time_tooltip(get(linkedscene),1));"    onclick="looktohotspot(get(name),65);js(actionName('showModal',get(spotid)););if(linkedscene, tween(scale,0.25,0.5); tween(oy,-20,0.5); tween(alpha,0,0.5); looktohotspot(); loadscene(get(linkedscene),null,MERGE,BLEND(1)); skin_updatescroll(); );"/>
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="38.056" atv="23.920" linkedscene="scene_11_________" />
 
 		
 
@@ -719,11 +734,13 @@
 			<cube url="panos/02____________.tiles/vr/pano_%s.jpg" />
 		</image>
 
-		<hotspot name="spot1" url="skin/vtourskin_spots.png" tooltip="食物与碳足迹"  ath="121.904" atv="-19.700" distorted="false" zoom="false" scale="0.6" spotid='profile-13' onloaded="do_crop_animation(100,101, 60);add_all_the_time_tooltip();if(distorted,add_tooltip2(get(linkedscene),1),add_all_the_time_tooltip(get(linkedscene),1));"    onclick="looktohotspot(get(name),65);js(actionName('showModal',get(spotid)););if(linkedscene, tween(scale,0.25,0.5); tween(oy,-20,0.5); tween(alpha,0,0.5); looktohotspot(); loadscene(get(linkedscene),null,MERGE,BLEND(1)); skin_updatescroll(); );"/>
+		<hotspot name="spot1" url="skin/vtourskin_spots.png" tooltip="鼓励公众参与"  ath="121.904" atv="-19.700" distorted="false" zoom="false" scale="0.6" spotid='profile-13' onloaded="do_crop_animation(100,101, 60);add_all_the_time_tooltip();if(distorted,add_tooltip2(get(linkedscene),1),add_all_the_time_tooltip(get(linkedscene),1));"    onclick="looktohotspot(get(name),65);js(actionName('showModal',get(spotid)););if(linkedscene, tween(scale,0.25,0.5); tween(oy,-20,0.5); tween(alpha,0,0.5); looktohotspot(); loadscene(get(linkedscene),null,MERGE,BLEND(1)); skin_updatescroll(); );"/>
 
 		
 
 		<!-- <hotspot name="spot1" style="skin_hotspotstyle" ath="121.904" atv="-19.700" linkedscene="scene_03____________" /> -->
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="132.875" atv="26.740" linkedscene="scene_03____________" />
+		
 
 	</scene>
 
